@@ -1,0 +1,9 @@
+#!/bin/bash
+
+to_prepend="$1"
+shift
+data="$1"
+
+cat "${to_prepend}" "${data}" > /tmp/newfile.txt
+
+cp /tmp/newfile.txt "${data}"

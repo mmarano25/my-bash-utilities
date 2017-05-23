@@ -1,0 +1,9 @@
+#!/bin/bash
+
+IMAGEDIR="/home/matt/Desktop/desktop_images"
+IMAGE=$(ls "$IMAGEDIR" |shuf -n 1)
+
+gsettings set org.gnome.desktop.background picture-uri file://$IMAGEDIR/$IMAGE
+
+touch /tmp/image_picker.log
+echo "Changed desktop background successfully: $(date) $IMAGE/$IMAGEDIR" >> /tmp/image_picker.log
