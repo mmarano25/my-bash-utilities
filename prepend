@@ -1,9 +1,16 @@
 #!/bin/bash
 
-to_prepend="$1"
-shift
-data="$1"
+read TOPREPEND
 
-cat "${to_prepend}" "${data}" > /tmp/newfile.txt
+for f in $@
+do
+    if [[ -f $f ]]
+    then
+        echo $TOPREPEND > /tmp/prepend.tmp
+        cat $f >> /tmp/prepend.tmp
+        cat /tmp/prepend.tmp > $f
+    else 
+        echo "$f does not exist"
+    fi
+done
 
-cp /tmp/newfile.txt "${data}"
