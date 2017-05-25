@@ -1,9 +1,14 @@
 #!/bin/bash
 
+PID=$(pgrep gnome-session)
+export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
+
 IMAGEDIR="/home/matt/Desktop/desktop_images"
 IMAGE=$(ls "$IMAGEDIR" |shuf -n 1)
 
+gsettings set org.gnome.desktop.background picture-options "spanned"
 gsettings set org.gnome.desktop.background picture-uri file://$IMAGEDIR/$IMAGE
+EXITCODE=$?
 
 touch /tmp/image_picker.log
-echo "Changed desktop background successfully: $(date) $IMAGE/$IMAGEDIR" >> /tmp/image_picker.log
+echo "Changed desktop background, exit code is ${EXITCODE}: $(date) $IMAGEDIR/$IMAGE" >> /tmp/image_picker.log
