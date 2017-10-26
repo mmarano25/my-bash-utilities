@@ -6,7 +6,7 @@ export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/en
 IMAGEDIR="/home/matt/Desktop/desktop_images"
 IMAGE=$(ls "$IMAGEDIR" |shuf -n 1)
 
-gsettings set org.gnome.desktop.background picture-options "spanned"
+gsettings set org.gnome.desktop.background picture-options "zoom"
 gsettings set org.gnome.desktop.background picture-uri file://$IMAGEDIR/$IMAGE
 EXITCODE=$?
 
