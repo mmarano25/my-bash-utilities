@@ -1,6 +1,11 @@
 #!/bin/bash
 
-if [[ -f /media/matt ]] 
+if [[ -e /media/matt/"Seagate Expansion Drive" ]] 
 then
+    if [[ ! -e /tmp/backup_times.log ]]
+    then
+        touch /tmp/backup_times.log
+    fi
     rsync -avz --delete /home/matt/ /media/matt/"Seagate Expansion Drive"/Ubuntu-MattsPC-Backup
+    date > /tmp/backup_times.log
 fi
