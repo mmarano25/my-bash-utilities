@@ -11,3 +11,5 @@ image_picker
     Changes the desktop for gnome Ubuntu 16.04
     Can be run from cron, exports required variables.
 
+backup_external_Seagate
+    Backs up home directory to the Seagate drive if attached, logs results to /tmp. 
