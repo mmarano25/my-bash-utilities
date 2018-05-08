@@ -2,10 +2,10 @@
 
 if [[ -e /media/matt/"Seagate Expansion Drive" ]] 
 then
-    if [[ ! -e /tmp/backup_times.log ]]
+    if [[ ! -e /tmp/seagate_backups.log ]]
     then
-        touch /tmp/backup_times.log
+        touch /tmp/seagate_backups.log
     fi
-    rsync -avz --delete /home/matt/ /media/matt/"Seagate Expansion Drive"/Ubuntu-MattsPC-Backup
-    date > /tmp/backup_times.log
+    rsync -avz --delete /home/matt/ /media/matt/"Seagate Expansion Drive"/Ubuntu-MattsPC-Backup > /tmp/seagate_backups.log
+    date > /tmp/seagate_backups.log
 fi
